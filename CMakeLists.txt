@@ -11,8 +11,6 @@ cmake_minimum_required(VERSION 3.0)
 project(PythonQt)
 #-----------------------------------------------------------------------------
 
-include(CTestUseLaunchers OPTIONAL)
-
 #-----------------------------------------------------------------------------
 # Python libraries
 
