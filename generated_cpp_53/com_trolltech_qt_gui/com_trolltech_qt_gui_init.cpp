@@ -659,7 +659,9 @@ PythonQt::priv()->registerCPPClass("QShowEvent", "QEvent", "QtGui", PythonQtCrea
 PythonQt::priv()->registerClass(&QSizeGrip::staticMetaObject, "QtGui", PythonQtCreateObject<PythonQtWrapper_QSizeGrip>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QSizeGrip>, module, 0);
 PythonQt::priv()->registerClass(&QSlider::staticMetaObject, "QtGui", PythonQtCreateObject<PythonQtWrapper_QSlider>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QSlider>, module, 0);
 PythonQt::priv()->registerClass(&QSortFilterProxyModel::staticMetaObject, "QtGui", PythonQtCreateObject<PythonQtWrapper_QSortFilterProxyModel>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QSortFilterProxyModel>, module, 0);
+#if defined(QT_MULTIMEDIA_LIB)
 PythonQt::priv()->registerClass(&QSound::staticMetaObject, "QtGui", PythonQtCreateObject<PythonQtWrapper_QSound>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QSound>, module, 0);
+#endif
 PythonQt::priv()->registerCPPClass("QSpacerItem", "", "QtGui", PythonQtCreateObject<PythonQtWrapper_QSpacerItem>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QSpacerItem>, module, 0);
 PythonQt::self()->addParentClass("QSpacerItem", "QLayoutItem",PythonQtUpcastingOffset<QSpacerItem,QLayoutItem>());
 PythonQt::priv()->registerClass(&QSpinBox::staticMetaObject, "QtGui", PythonQtCreateObject<PythonQtWrapper_QSpinBox>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QSpinBox>, module, 0);

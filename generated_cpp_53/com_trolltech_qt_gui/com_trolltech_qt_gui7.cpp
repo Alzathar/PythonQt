@@ -11463,6 +11463,7 @@ Qt::DropActions  PythonQtWrapper_QSortFilterProxyModel::supportedDropActions(QSo
 }
 
 
+#if defined(QT_MULTIMEDIA_LIB)
 
 PythonQtShell_QSound::~PythonQtShell_QSound() {
   PythonQtPrivate* priv = PythonQt::priv();
@@ -11619,7 +11620,7 @@ void PythonQtWrapper_QSound::setLoops(QSound* theWrappedObject, int  arg__1)
   ( theWrappedObject->setLoops(arg__1));
 }
 
-
+#endif
 
 PythonQtShell_QSpacerItem::~PythonQtShell_QSpacerItem() {
   PythonQtPrivate* priv = PythonQt::priv();

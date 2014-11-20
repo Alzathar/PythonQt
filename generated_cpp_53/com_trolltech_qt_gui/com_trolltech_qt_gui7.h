@@ -65,7 +65,9 @@
 #include <qsizepolicy.h>
 #include <qslider.h>
 #include <qsortfilterproxymodel.h>
+#if defined(QT_MULTIMEDIA_LIB)
 #include <qsound.h>
+#endif
 #include <qspinbox.h>
 #include <qsplashscreen.h>
 #include <qsplitter.h>
@@ -1514,7 +1516,7 @@ void delete_QSortFilterProxyModel(QSortFilterProxyModel* obj) { delete obj; }
 
 
 
-
+#if defined(QT_MULTIMEDIA_LIB)
 
 class PythonQtShell_QSound : public QSound
 {
@@ -1549,7 +1551,7 @@ void delete_QSound(QSound* obj) { delete obj; }
    void setLoops(QSound* theWrappedObject, int  arg__1);
 };
 
-
+#endif
 
 
 
