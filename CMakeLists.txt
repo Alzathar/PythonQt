@@ -143,6 +143,30 @@ else()
 endif()
 
 #-----------------------------------------------------------------------------
+# Print a summary of the wrapped module
+  message(STATUS "\nQt modules wrapped" )
+  message(STATUS "==================")
+  foreach(qtlib ${qtlibs})
+    if (${PythonQt_Wrap_Qt${qtlib}})
+      string(TOLOWER ${qtlib} qtlib_lower)
+      if ("${qtlib_lower}" STREQUAL "widgets")
+        message(STATUS " - ${qtlib} ... Yes (included in PythonQt.QtGui namespace)")
+      elseif ("${qtlib_lower}" STREQUAL "printsupport")
+        message(STATUS " - ${qtlib} ... Yes (included in PythonQt.QtGui namespace)")
+      elseif ("${qtlib_lower}" STREQUAL "webkitwidgets")
+        message(STATUS " - ${qtlib} ... Yes (included in PythonQt.QtWebKit namespace)")
+      elseif ("${qtlib_lower}" STREQUAL "multimediawidgets")
+        message(STATUS " - ${qtlib} ... Yes (included in PythonQt.QtMultimedia namespace)")
+      else()
+        message(STATUS " - ${qtlib} ... Yes")
+      endif()
+    else()
+      message(STATUS " - ${qtlib} ... No")
+    endif()
+  endforeach()
+  message(STATUS "\n")
+
+#-----------------------------------------------------------------------------
 # The variable "generated_cpp_suffix" allows to conditionnally compile the generated wrappers 
 # associated with the Qt version being used.
   set(generated_cpp_suffix "")
