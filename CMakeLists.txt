@@ -185,13 +185,27 @@ endif()
     src/PythonQtBoolResult.cpp
     generated_cpp${generated_cpp_suffix}/com_trolltech_qt_core_builtin/com_trolltech_qt_core_builtin0.cpp
     generated_cpp${generated_cpp_suffix}/com_trolltech_qt_core_builtin/com_trolltech_qt_core_builtin_init.cpp
-    generated_cpp${generated_cpp_suffix}/com_trolltech_qt_gui_builtin/com_trolltech_qt_gui_builtin0.cpp
-    generated_cpp${generated_cpp_suffix}/com_trolltech_qt_gui_builtin/com_trolltech_qt_gui_builtin_init.cpp
   )
+  
   if (PythonQt_QT_VERSION VERSION_LESS "5")
     set(sources 
       ${sources}
       generated_cpp${generated_cpp_suffix}/PythonQt_QtBindings.cpp
+    )
+  endif()
+  
+  if (PythonQt_Wrap_QtGui OR PythonQt_Wrap_Qtgui)
+    set(sources
+      ${sources}
+      generated_cpp${generated_cpp_suffix}/com_trolltech_qt_gui_builtin/com_trolltech_qt_gui_builtin0.cpp
+      generated_cpp${generated_cpp_suffix}/com_trolltech_qt_gui_builtin/com_trolltech_qt_gui_builtin_init.cpp
+    )
+  endif()
+  
+  if (PythonQt_Wrap_QtWidgets OR PythonQt_Wrap_Qtwidgets)
+    set(sources
+      ${sources}
+      src/gui/PythonQtScriptingConsole.cpp
     )
   endif()
 
@@ -233,15 +247,26 @@ endif()
 #-----------------------------------------------------------------------------
 # Headers that should run through moc
 
-set(moc_sources
-    src/PythonQt.h
-    src/PythonQtSignalReceiver.h
-    src/PythonQtStdDecorators.h
-    src/gui/PythonQtScriptingConsole.h
-
-    generated_cpp${generated_cpp_suffix}/com_trolltech_qt_core_builtin/com_trolltech_qt_core_builtin0.h
-    generated_cpp${generated_cpp_suffix}/com_trolltech_qt_gui_builtin/com_trolltech_qt_gui_builtin0.h
-)
+  set(moc_sources
+      src/PythonQt.h
+      src/PythonQtSignalReceiver.h
+      src/PythonQtStdDecorators.h
+      generated_cpp${generated_cpp_suffix}/com_trolltech_qt_core_builtin/com_trolltech_qt_core_builtin0.h
+  )
+  
+  if (PythonQt_Wrap_QtGui OR PythonQt_Wrap_Qtgui)
+    set(moc_sources
+      ${moc_sources}
+      generated_cpp${generated_cpp_suffix}/com_trolltech_qt_gui_builtin/com_trolltech_qt_gui_builtin0.h
+    )
+  endif()
+  
+  if (PythonQt_Wrap_QtWidgets OR PythonQt_Wrap_Qtwidgets)
+    set(moc_sources
+      ${moc_sources}
+      src/gui/PythonQtScriptingConsole.h
+    )
+  endif()
 
 #-----------------------------------------------------------------------------
 # Add extra sources
