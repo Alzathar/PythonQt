@@ -183,19 +183,10 @@ foreach(qtlib core gui network opengl sql svg uitools webkit xml xmlpatterns)
   endif()
 endforeach()
 
-#-----------------------------------------------------------------------------
-# UI files
-set(ui_sources )
-
-#-----------------------------------------------------------------------------
-# Resources
-set(qrc_sources )
 
 #-----------------------------------------------------------------------------
 # Do wrapping
 qt4_wrap_cpp(gen_moc_sources ${moc_sources})
-qt4_wrap_ui(gen_ui_sources ${ui_sources})
-qt4_add_resources(gen_qrc_sources ${qrc_sources})
 
 #-----------------------------------------------------------------------------
 # Build the library
