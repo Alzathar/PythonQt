@@ -215,6 +215,11 @@ if (PythonQt_QT_VERSION)
 
 #-----------------------------------------------------------------------------
 # Print a summary of the wrapped module
+
+  if (PythonQt_Wrap_QtUiTools OR PythonQt_Wrap_Qtuitools)
+    message(STATUS "\nWARNING: The wrapping of the UiTools library can causes \"different visibility settings\"\n         warnings on Mac OS (see [QTBUG-37962] [QTBUG-3995])")
+  endif()
+
   message(STATUS "\nQt modules wrapped" )
   message(STATUS "==================")
   foreach(qtlib ${qtlibs})
