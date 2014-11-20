@@ -372,3 +372,39 @@ install(TARGETS PythonQt
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib)
 install(FILES ${headers} DESTINATION include/PythonQt)
+
+#-----------------------------------------------------------------------------
+# Testing
+
+  option(BUILD_TESTING "Build the testing tree." OFF)
+  include(CTest)
+
+  if(BUILD_TESTING)
+    create_test_sourcelist(test_sources PythonQtCppTests.cpp
+      tests/PythonQtTestMain.cpp
+      )
+
+    list(APPEND test_sources
+      tests/PythonQtTests.cpp
+      tests/PythonQtTests.h
+      )
+
+    if (PythonQt_QT_VERSION VERSION_GREATER "4")
+      QT5_WRAP_CPP(test_sources tests/PythonQtTests.h)
+    else()
+      QT4_WRAP_CPP(test_sources tests/PythonQtTests.h)
+    endif()    
+
+    set_property(SOURCE tests/PythonQtTestMain.cpp PROPERTY COMPILE_DEFINITIONS "main=tests_PythonQtTestMain")
+  
+    add_executable(PythonQtCppTests ${test_sources})
+    target_link_libraries(PythonQtCppTests PythonQt ${Qt5Test_LIBRARIES})
+  
+    add_test(
+      NAME tests_PythonQtTestMain
+      COMMAND PythonQtCppTests tests/PythonQtTestMain
+      )
+  endif()
+
+
+endif() 
