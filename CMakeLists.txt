@@ -86,33 +86,30 @@ endif()
 #-----------------------------------------------------------------------------
 # Sources
 
-set(sources
-    src/PythonQtBoolResult.cpp
-    src/PythonQtClassInfo.cpp
-    src/PythonQtClassWrapper.cpp
-    src/PythonQtConversion.cpp
-    src/PythonQt.cpp
-    src/PythonQtImporter.cpp
-    src/PythonQtInstanceWrapper.cpp
-    src/PythonQtMethodInfo.cpp
-    src/PythonQtMisc.cpp
-    src/PythonQtObjectPtr.cpp
-    src/PythonQtQFileImporter.cpp
-    src/PythonQtSignalReceiver.cpp
-    src/PythonQtSlot.cpp
-    src/PythonQtSignal.cpp
+  set(sources
     src/PythonQtStdDecorators.cpp
+    src/PythonQt.cpp
+    src/PythonQtClassInfo.cpp
+    src/PythonQtImporter.cpp
+    src/PythonQtObjectPtr.cpp
     src/PythonQtStdIn.cpp
     src/PythonQtStdOut.cpp
-    src/gui/PythonQtScriptingConsole.cpp
-    
     generated_cpp${generated_cpp_suffix}/PythonQt_QtBindings.cpp
-
+    src/PythonQtSignal.cpp
+    src/PythonQtSlot.cpp
+    src/PythonQtMisc.cpp
+    src/PythonQtMethodInfo.cpp
+    src/PythonQtConversion.cpp
+    src/PythonQtSignalReceiver.cpp 
+    src/PythonQtInstanceWrapper.cpp
+    src/PythonQtQFileImporter.cpp
+    src/PythonQtClassWrapper.cpp
+    src/PythonQtBoolResult.cpp
     generated_cpp${generated_cpp_suffix}/com_trolltech_qt_core_builtin/com_trolltech_qt_core_builtin0.cpp
     generated_cpp${generated_cpp_suffix}/com_trolltech_qt_core_builtin/com_trolltech_qt_core_builtin_init.cpp
     generated_cpp${generated_cpp_suffix}/com_trolltech_qt_gui_builtin/com_trolltech_qt_gui_builtin0.cpp
     generated_cpp${generated_cpp_suffix}/com_trolltech_qt_gui_builtin/com_trolltech_qt_gui_builtin_init.cpp
-)
+  )
 
 #-----------------------------------------------------------------------------
 # List headers.  This is list is used for the install command.
