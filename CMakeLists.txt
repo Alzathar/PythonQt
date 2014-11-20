@@ -21,6 +21,8 @@ add_definitions(-DPYTHONQT_USE_RELEASE_PYTHON_FALLBACK)
 #-----------------------------------------------------------------------------
 # Build options
 
+set(PythonQt_QT_MAJOR_VERSION "" CACHE STRING "Choose which version of Qt (4 or 5) you wand to wrap")
+
 option(PythonQt_Wrap_QtAll "Make all Qt components available in python" OFF)
 
 set(qtlibs Core Gui Widgets Network OpenGL PrintSupport Sql Svg UiTools WebKit WebKitWidgets Xml)
