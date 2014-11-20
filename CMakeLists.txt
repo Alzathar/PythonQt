@@ -117,32 +117,32 @@ set(sources
 #-----------------------------------------------------------------------------
 # List headers.  This is list is used for the install command.
 
-set(headers
-    src/PythonQtBoolResult.h
-    src/PythonQtClassInfo.h
-    src/PythonQtClassWrapper.h
-    src/PythonQtConversion.h
-    src/PythonQtCppWrapperFactory.h
-    src/PythonQtDoc.h
+  set(headers
     src/PythonQt.h
-    src/PythonQtImporter.h
-    src/PythonQtImportFileInterface.h
-    src/PythonQtInstanceWrapper.h
-    src/PythonQtMethodInfo.h
-    src/PythonQtMisc.h
-    src/PythonQtObjectPtr.h
-    src/PythonQtQFileImporter.h
-    src/PythonQtSignalReceiver.h
-    src/PythonQtSlot.h
-    src/PythonQtSignal.h
     src/PythonQtStdDecorators.h
+    src/PythonQtClassInfo.h
+    src/PythonQtImporter.h
+    src/PythonQtObjectPtr.h
+    src/PythonQtSignal.h
+    src/PythonQtSlot.h
     src/PythonQtStdIn.h
     src/PythonQtStdOut.h
-    src/PythonQtSystem.h
+    src/PythonQtMisc.h
+    src/PythonQtMethodInfo.h
+    src/PythonQtImportFileInterface.h
+    src/PythonQtConversion.h
+    src/PythonQtSignalReceiver.h
+    src/PythonQtInstanceWrapper.h
+    src/PythonQtClassWrapper.h
+    src/PythonQtCppWrapperFactory.h
+    src/PythonQtQFileImporter.h
+    src/PythonQtQFileImporter.h
     src/PythonQtVariants.h
-    src/PythonQtPythonInclude.h
+    src/PythonQtSystem.h
+    src/PythonQtUtils.h
+    src/PythonQtBoolResult.h
     generated_cpp${generated_cpp_suffix}/PythonQt_QtBindings.h
-)
+  )
 
 #-----------------------------------------------------------------------------
 # Headers that should run through moc
