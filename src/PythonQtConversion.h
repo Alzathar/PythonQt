@@ -42,6 +42,7 @@
 */
 //----------------------------------------------------------------------------------
 
+// To remove lots of warnings like: conversion from string literal to 'char *' is deprecated [-Wdeprecated-writable-strings]
 #pragma GCC diagnostic ignored "-Wwrite-strings"
 
 #include "PythonQt.h"
