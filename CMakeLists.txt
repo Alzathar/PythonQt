@@ -23,8 +23,6 @@ add_definitions(-DPYTHONQT_USE_RELEASE_PYTHON_FALLBACK)
 
 set(PythonQt_QT_MAJOR_VERSION "" CACHE STRING "Choose which version of Qt (4 or 5) you wand to wrap")
 
-option(PythonQt_Wrap_QtAll "Make all Qt components available in python" OFF)
-
 if (PythonQt_QT_MAJOR_VERSION)
   if (PythonQt_QT_MAJOR_VERSION VERSION_GREATER "4")
     find_package(Qt5 REQUIRED COMPONENTS Core)
@@ -60,6 +58,8 @@ else()
       MultimediaWidgets
       XmlPatterns
     )
+  option(PythonQt_Wrap_QtAll "Make all Qt components available in python" OFF)
+
   endif()
 endif()
 
