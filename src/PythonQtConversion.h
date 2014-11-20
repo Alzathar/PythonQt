@@ -42,6 +42,8 @@
 */
 //----------------------------------------------------------------------------------
 
+#pragma GCC diagnostic ignored "-Wwrite-strings"
+
 #include "PythonQt.h"
 #include "PythonQtMisc.h"
 #include "PythonQtClassInfo.h"
