@@ -50,7 +50,6 @@
 #include "PythonQtClassInfo.h"
 #include "PythonQtMethodInfo.h"
 
-#include <QWidget>
 #include <QList>
 #include <vector>
 
