@@ -240,6 +240,20 @@ if (PythonQt_QT_VERSION)
       message(STATUS " - ${qtlib} ... No")
     endif()
   endforeach()
+  
+  message(STATUS "\nPythonQt extras" )
+  message(STATUS "===============")
+  if (BUILD_CONSOLE_WIDGET)
+    if (PythonQt_Wrap_QtWidgets OR PythonQt_Wrap_Qtwidgets)
+      message(STATUS " - Scripting console widget included ... Yes")
+    else()
+      message(STATUS " - Scripting console widget included ... ERROR\n\n")
+      message(FATAL_ERROR "You attempted to include the sources for the PythonQtScriptingConsole widget but QtGui and QtWidgets are not wrapped.")
+    endif()
+  else()
+    message(STATUS " - Scripting console widget included ... No")
+  endif()
+  
   message(STATUS "\n")
 
 #-----------------------------------------------------------------------------
