@@ -3,12 +3,10 @@
 #include <QObject>
 #include <QPainterPath>
 #include <QPixmap>
-#include <QPrinterInfo>
 #include <QTextEdit>
 #include <QVarLengthArray>
 #include <QVariant>
 #include <QWidget>
-#include <qabstractprintdialog.h>
 #include <qaction.h>
 #include <qbackingstore.h>
 #include <qbitmap.h>
@@ -60,12 +58,6 @@
 #include <qplaintextedit.h>
 #include <qpoint.h>
 #include <qpolygon.h>
-#include <qprintdialog.h>
-#include <qprintengine.h>
-#include <qprinter.h>
-#include <qprinterinfo.h>
-#include <qprintpreviewdialog.h>
-#include <qprintpreviewwidget.h>
 #include <qprogressbar.h>
 #include <qprogressdialog.h>
 #include <qpushbutton.h>
@@ -91,7 +83,16 @@
 #include <qwidget.h>
 #include <qwindow.h>
 
-
+#if defined(QT_PRINTSUPPORT_LIB)
+#include <QPrinterInfo>
+#include <qabstractprintdialog.h>
+#include <qprintdialog.h>
+#include <qprintengine.h>
+#include <qprinter.h>
+#include <qprinterinfo.h>
+#include <qprintpreviewdialog.h>
+#include <qprintpreviewwidget.h>
+#endif
 
 class PythonQtShell_QPagedPaintDevice : public QPagedPaintDevice
 {
@@ -1524,7 +1525,7 @@ void delete_QPolygonF(QPolygonF* obj) { delete obj; }
 
 
 
-
+#if defined(QT_PRINTSUPPORT_LIB)
 
 class PythonQtShell_QPrintDialog : public QPrintDialog
 {
@@ -2000,7 +2001,7 @@ void delete_QPrinterInfo(QPrinterInfo* obj) { delete obj; }
     bool __nonzero__(QPrinterInfo* obj) { return !obj->isNull(); }
 };
 
-
+#endif
 
 
 

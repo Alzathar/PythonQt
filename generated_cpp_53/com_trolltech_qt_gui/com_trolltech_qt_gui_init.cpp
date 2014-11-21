@@ -414,7 +414,9 @@ PythonQt::priv()->registerCPPClass("QAbstractGraphicsShapeItem", "", "QtGui", Py
 PythonQt::self()->addParentClass("QAbstractGraphicsShapeItem", "QGraphicsItem",PythonQtUpcastingOffset<QAbstractGraphicsShapeItem,QGraphicsItem>());
 PythonQt::priv()->registerClass(&QAbstractItemDelegate::staticMetaObject, "QtGui", PythonQtCreateObject<PythonQtWrapper_QAbstractItemDelegate>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QAbstractItemDelegate>, module, 0);
 PythonQt::priv()->registerClass(&QAbstractItemView::staticMetaObject, "QtGui", PythonQtCreateObject<PythonQtWrapper_QAbstractItemView>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QAbstractItemView>, module, 0);
+#if defined(QT_PRINTSUPPORT_LIB)
 PythonQt::priv()->registerClass(&QAbstractPrintDialog::staticMetaObject, "QtGui", PythonQtCreateObject<PythonQtWrapper_QAbstractPrintDialog>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QAbstractPrintDialog>, module, 0);
+#endif
 PythonQt::priv()->registerClass(&QAbstractProxyModel::staticMetaObject, "QtGui", PythonQtCreateObject<PythonQtWrapper_QAbstractProxyModel>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QAbstractProxyModel>, module, 0);
 PythonQt::priv()->registerClass(&QAbstractScrollArea::staticMetaObject, "QtGui", PythonQtCreateObject<PythonQtWrapper_QAbstractScrollArea>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QAbstractScrollArea>, module, 0);
 PythonQt::priv()->registerClass(&QAbstractSlider::staticMetaObject, "QtGui", PythonQtCreateObject<PythonQtWrapper_QAbstractSlider>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QAbstractSlider>, module, 0);
@@ -597,7 +599,9 @@ PythonQt::priv()->registerClass(&QOpenGLTimerQuery::staticMetaObject, "QtGui", P
 PythonQt::priv()->registerCPPClass("QOpenGLVersionProfile", "", "QtGui", PythonQtCreateObject<PythonQtWrapper_QOpenGLVersionProfile>, NULL, module, PythonQt::Type_RichCompare);
 PythonQt::priv()->registerClass(&QOpenGLVertexArrayObject::staticMetaObject, "QtGui", PythonQtCreateObject<PythonQtWrapper_QOpenGLVertexArrayObject>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QOpenGLVertexArrayObject>, module, 0);
 PythonQt::priv()->registerCPPClass("QPageLayout", "", "QtGui", PythonQtCreateObject<PythonQtWrapper_QPageLayout>, NULL, module, PythonQt::Type_RichCompare);
+#if defined(QT_PRINTSUPPORT_LIB)
 PythonQt::priv()->registerClass(&QPageSetupDialog::staticMetaObject, "QtGui", PythonQtCreateObject<PythonQtWrapper_QPageSetupDialog>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QPageSetupDialog>, module, 0);
+#endif
 PythonQt::priv()->registerCPPClass("QPageSize", "", "QtGui", PythonQtCreateObject<PythonQtWrapper_QPageSize>, NULL, module, PythonQt::Type_RichCompare);
 PythonQt::priv()->registerCPPClass("QPagedPaintDevice", "", "QtGui", PythonQtCreateObject<PythonQtWrapper_QPagedPaintDevice>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QPagedPaintDevice>, module, 0);
 PythonQt::self()->addParentClass("QPagedPaintDevice", "QPaintDevice",PythonQtUpcastingOffset<QPagedPaintDevice,QPaintDevice>());
@@ -625,6 +629,7 @@ PythonQt::priv()->registerCPPClass("QPixmapCache::Key", "", "QtGui", PythonQtCre
 PythonQt::priv()->registerClass(&QPlainTextDocumentLayout::staticMetaObject, "QtGui", PythonQtCreateObject<PythonQtWrapper_QPlainTextDocumentLayout>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QPlainTextDocumentLayout>, module, 0);
 PythonQt::priv()->registerClass(&QPlainTextEdit::staticMetaObject, "QtGui", PythonQtCreateObject<PythonQtWrapper_QPlainTextEdit>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QPlainTextEdit>, module, 0);
 PythonQt::priv()->registerCPPClass("QPolygonF", "", "QtGui", PythonQtCreateObject<PythonQtWrapper_QPolygonF>, NULL, module, PythonQt::Type_Add|PythonQt::Type_Multiply|PythonQt::Type_RichCompare);
+#if defined(QT_PRINTSUPPORT_LIB)
 PythonQt::priv()->registerClass(&QPrintDialog::staticMetaObject, "QtGui", PythonQtCreateObject<PythonQtWrapper_QPrintDialog>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QPrintDialog>, module, 0);
 PythonQt::priv()->registerCPPClass("QPrintEngine", "", "QtGui", PythonQtCreateObject<PythonQtWrapper_QPrintEngine>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QPrintEngine>, module, 0);
 PythonQt::priv()->registerClass(&QPrintPreviewDialog::staticMetaObject, "QtGui", PythonQtCreateObject<PythonQtWrapper_QPrintPreviewDialog>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QPrintPreviewDialog>, module, 0);
@@ -633,6 +638,7 @@ PythonQt::priv()->registerCPPClass("QPrinter", "", "QtGui", PythonQtCreateObject
 PythonQt::self()->addParentClass("QPrinter", "QPagedPaintDevice",PythonQtUpcastingOffset<QPrinter,QPagedPaintDevice>());
 PythonQt::self()->addParentClass("QPrinter", "QPaintDevice",PythonQtUpcastingOffset<QPrinter,QPaintDevice>());
 PythonQt::priv()->registerCPPClass("QPrinterInfo", "", "QtGui", PythonQtCreateObject<PythonQtWrapper_QPrinterInfo>, NULL, module, PythonQt::Type_NonZero);
+#endif
 PythonQt::priv()->registerClass(&QProgressBar::staticMetaObject, "QtGui", PythonQtCreateObject<PythonQtWrapper_QProgressBar>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QProgressBar>, module, 0);
 PythonQt::priv()->registerClass(&QProgressDialog::staticMetaObject, "QtGui", PythonQtCreateObject<PythonQtWrapper_QProgressDialog>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QProgressDialog>, module, 0);
 PythonQt::priv()->registerClass(&QProxyStyle::staticMetaObject, "QtGui", PythonQtCreateObject<PythonQtWrapper_QProxyStyle>, PythonQtSetInstanceWrapperOnShell<PythonQtShell_QProxyStyle>, module, 0);
@@ -816,7 +822,9 @@ PythonQtRegisterListTemplateConverterForKnownClass(QList, QModelIndex);
 PythonQtRegisterListTemplateConverterForKnownClass(QList, QPageSize);
 PythonQtRegisterListTemplateConverterForKnownClass(QList, QPersistentModelIndex);
 PythonQtRegisterListTemplateConverterForKnownClass(QList, QPolygonF);
+#if defined(QT_PRINTSUPPORT_LIB)
 PythonQtRegisterListTemplateConverterForKnownClass(QList, QPrinterInfo);
+#endif
 PythonQtRegisterListTemplateConverterForKnownClass(QList, QTableWidgetSelectionRange);
 PythonQtRegisterListTemplateConverterForKnownClass(QList, QTextBlock);
 PythonQtRegisterListTemplateConverterForKnownClass(QList, QTextEdit::ExtraSelection);

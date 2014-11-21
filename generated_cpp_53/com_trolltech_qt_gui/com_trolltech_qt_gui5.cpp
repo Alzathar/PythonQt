@@ -64,7 +64,6 @@
 #include <qpalette.h>
 #include <qpixmap.h>
 #include <qpoint.h>
-#include <qprinter.h>
 #include <qpushbutton.h>
 #include <qquaternion.h>
 #include <qrect.h>
@@ -86,6 +85,10 @@
 #include <qvector4d.h>
 #include <qwidget.h>
 #include <qwindow.h>
+
+#if defined(QT_PRINTSUPPORT_LIB)
+#include <qprinter.h>
+#endif
 
 QMargins* PythonQtWrapper_QMargins::new_QMargins()
 { 
@@ -11100,7 +11103,7 @@ QString PythonQtWrapper_QPageLayout::py_toString(QPageLayout* obj) {
   return result;
 }
 
-
+#if defined(QT_PRINTSUPPORT_LIB)
 
 PythonQtShell_QPageSetupDialog::~PythonQtShell_QPageSetupDialog() {
   PythonQtPrivate* priv = PythonQt::priv();
@@ -12175,7 +12178,7 @@ QPrinter*  PythonQtWrapper_QPageSetupDialog::printer(QPageSetupDialog* theWrappe
   return ( theWrappedObject->printer());
 }
 
-
+#endif
 
 QPageSize* PythonQtWrapper_QPageSize::new_QPageSize()
 { 

@@ -18,7 +18,6 @@
 #include <qabstractitemdelegate.h>
 #include <qabstractitemmodel.h>
 #include <qabstractitemview.h>
-#include <qabstractprintdialog.h>
 #include <qabstractproxymodel.h>
 #include <qabstractscrollarea.h>
 #include <qabstractslider.h>
@@ -84,7 +83,6 @@
 #include <qpixmap.h>
 #include <qpoint.h>
 #include <qpolygon.h>
-#include <qprinter.h>
 #include <qrect.h>
 #include <qregion.h>
 #include <qscreen.h>
@@ -107,7 +105,10 @@
 #include <qwidget.h>
 #include <qwindow.h>
 
-
+#if defined(QT_PRINTSUPPORT_LIB)
+#include <qprinter.h>
+#include <qabstractprintdialog.h>
+#endif
 
 class PythonQtShell_QAbstractButton : public QAbstractButton
 {
@@ -675,7 +676,7 @@ void delete_QAbstractItemView(QAbstractItemView* obj) { delete obj; }
 
 
 
-
+#if defined(QT_PRINTSUPPORT_LIB)
 
 class PythonQtShell_QAbstractPrintDialog : public QAbstractPrintDialog
 {
@@ -770,7 +771,7 @@ void delete_QAbstractPrintDialog(QAbstractPrintDialog* obj) { delete obj; }
    int  toPage(QAbstractPrintDialog* theWrappedObject) const;
 };
 
-
+#endif
 
 
 

@@ -20,7 +20,6 @@
 #include <qabstractitemdelegate.h>
 #include <qabstractitemmodel.h>
 #include <qabstractitemview.h>
-#include <qabstractprintdialog.h>
 #include <qabstractproxymodel.h>
 #include <qabstractscrollarea.h>
 #include <qabstractslider.h>
@@ -85,7 +84,6 @@
 #include <qpixmap.h>
 #include <qpoint.h>
 #include <qpolygon.h>
-#include <qprinter.h>
 #include <qrect.h>
 #include <qregion.h>
 #include <qscreen.h>
@@ -107,6 +105,11 @@
 #include <qvector.h>
 #include <qwidget.h>
 #include <qwindow.h>
+
+#if defined(QT_PRINTSUPPORT_LIB)
+#include <qprinter.h>
+#include <qabstractprintdialog.h>
+#endif
 
 PythonQtShell_QAbstractButton::~PythonQtShell_QAbstractButton() {
   PythonQtPrivate* priv = PythonQt::priv();
@@ -5112,6 +5115,7 @@ QRegion  PythonQtWrapper_QAbstractItemView::visualRegionForSelection(QAbstractIt
 }
 
 
+#if defined(QT_PRINTSUPPORT_LIB)
 
 PythonQtShell_QAbstractPrintDialog::~PythonQtShell_QAbstractPrintDialog() {
   PythonQtPrivate* priv = PythonQt::priv();
@@ -6232,7 +6236,7 @@ int  PythonQtWrapper_QAbstractPrintDialog::toPage(QAbstractPrintDialog* theWrapp
   return ( theWrappedObject->toPage());
 }
 
-
+#endif
 
 PythonQtShell_QAbstractProxyModel::~PythonQtShell_QAbstractProxyModel() {
   PythonQtPrivate* priv = PythonQt::priv();

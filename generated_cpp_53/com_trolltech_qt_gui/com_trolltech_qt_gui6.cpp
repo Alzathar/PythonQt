@@ -5,12 +5,10 @@
 #include <QAbstractTextDocumentLayout>
 #include <QPainterPath>
 #include <QPixmap>
-#include <QPrinterInfo>
 #include <QTextEdit>
 #include <QVarLengthArray>
 #include <QVariant>
 #include <QWidget>
-#include <qabstractprintdialog.h>
 #include <qaction.h>
 #include <qbackingstore.h>
 #include <qbitmap.h>
@@ -60,9 +58,6 @@
 #include <qplaintextedit.h>
 #include <qpoint.h>
 #include <qpolygon.h>
-#include <qprintengine.h>
-#include <qprinter.h>
-#include <qprinterinfo.h>
 #include <qprogressbar.h>
 #include <qprogressdialog.h>
 #include <qpushbutton.h>
@@ -87,6 +82,14 @@
 #include <qvector.h>
 #include <qwidget.h>
 #include <qwindow.h>
+
+#if defined(QT_PRINTSUPPORT_LIB)
+#include <QPrinterInfo>
+#include <qabstractprintdialog.h>
+#include <qprintengine.h>
+#include <qprinter.h>
+#include <qprinterinfo.h>
+#endif
 
 PythonQtShell_QPagedPaintDevice::~PythonQtShell_QPagedPaintDevice() {
   PythonQtPrivate* priv = PythonQt::priv();
@@ -6879,7 +6882,7 @@ QString PythonQtWrapper_QPolygonF::py_toString(QPolygonF* obj) {
   return result;
 }
 
-
+#if defined(QT_PRINTSUPPORT_LIB)
 
 PythonQtShell_QPrintDialog::~PythonQtShell_QPrintDialog() {
   PythonQtPrivate* priv = PythonQt::priv();
@@ -11051,7 +11054,7 @@ bool  PythonQtWrapper_QPrinterInfo::supportsCustomPageSizes(QPrinterInfo* theWra
   return ( theWrappedObject->supportsCustomPageSizes());
 }
 
-
+#endif
 
 PythonQtShell_QProgressBar::~PythonQtShell_QProgressBar() {
   PythonQtPrivate* priv = PythonQt::priv();

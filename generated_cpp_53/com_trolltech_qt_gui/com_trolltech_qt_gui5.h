@@ -54,7 +54,6 @@
 #include <qopengltimerquery.h>
 #include <qopenglvertexarrayobject.h>
 #include <qpagelayout.h>
-#include <qpagesetupdialog.h>
 #include <qpagesize.h>
 #include <qpaintdevice.h>
 #include <qpaintengine.h>
@@ -64,7 +63,6 @@
 #include <qpalette.h>
 #include <qpixmap.h>
 #include <qpoint.h>
-#include <qprinter.h>
 #include <qpushbutton.h>
 #include <qquaternion.h>
 #include <qrect.h>
@@ -87,7 +85,10 @@
 #include <qwidget.h>
 #include <qwindow.h>
 
-
+#if defined(QT_PRINTSUPPORT_LIB)
+#include <qpagesetupdialog.h>
+#include <qprinter.h>
+#endif
 
 class PythonQtWrapper_QMargins : public QObject
 { Q_OBJECT
@@ -2053,7 +2054,7 @@ void delete_QPageLayout(QPageLayout* obj) { delete obj; }
 
 
 
-
+#if defined(QT_PRINTSUPPORT_LIB)
 
 class PythonQtShell_QPageSetupDialog : public QPageSetupDialog
 {
@@ -2135,7 +2136,7 @@ void delete_QPageSetupDialog(QPageSetupDialog* obj) { delete obj; }
    QPrinter*  printer(QPageSetupDialog* theWrappedObject);
 };
 
-
+#endif
 
 
 
