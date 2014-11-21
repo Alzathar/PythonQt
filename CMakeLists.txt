@@ -100,8 +100,6 @@ if (PythonQt_QT_VERSION)
 #-----------------------------------------------------------------------------
 # Setup Qt
 
-  set(minimum_required_qt_version "4.6.2")
-
   if (PythonQt_QT_VERSION VERSION_GREATER "4")
   
     set(QT_LIBRARIES)
@@ -125,6 +123,8 @@ if (PythonQt_QT_VERSION)
     endif()
   
   else()
+    
+    set(minimum_required_qt_version "4.6.2")
   
     set(found_qt_version ${QT_VERSION_MAJOR}.${QT_VERSION_MINOR}.${QT_VERSION_PATCH})
 
