@@ -238,14 +238,8 @@ if (PythonQt_QT_VERSION)
     src/PythonQtBoolResult.cpp
     generated_cpp${generated_cpp_suffix}/com_trolltech_qt_core_builtin/com_trolltech_qt_core_builtin0.cpp
     generated_cpp${generated_cpp_suffix}/com_trolltech_qt_core_builtin/com_trolltech_qt_core_builtin_init.cpp
+    generated_cpp${generated_cpp_suffix}/PythonQt_QtBindings.cpp
   )
-  
-  if (PythonQt_QT_VERSION VERSION_LESS "5")
-    set(sources 
-      ${sources}
-      generated_cpp${generated_cpp_suffix}/PythonQt_QtBindings.cpp
-    )
-  endif()
   
   if (PythonQt_Wrap_QtGui OR PythonQt_Wrap_Qtgui)
     set(sources
@@ -290,13 +284,8 @@ if (PythonQt_QT_VERSION)
     src/PythonQtSystem.h
     src/PythonQtUtils.h
     src/PythonQtBoolResult.h
+    generated_cpp${generated_cpp_suffix}/PythonQt_QtBindings.h
   )
-  
-  if (PythonQt_QT_VERSION VERSION_LESS "5")
-    set(headers
-      ${headers}
-      generated_cpp${generated_cpp_suffix}/PythonQt_QtBindings.h)
-  endif()
 
 #-----------------------------------------------------------------------------
 # Headers that should run through moc
