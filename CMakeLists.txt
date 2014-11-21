@@ -60,7 +60,7 @@ if (PythonQt_QT_VERSION)
     set(qtlibs ${qtlibs_lower})
   else()
     # Add Qt5 CMake path in CMAKE_PREFIX_PATH
-    SET(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} ${Qt5_CMAKE_PATH})
+    set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} ${Qt5_CMAKE_PATH})
     if (PythonQt_QT_VERSION VERSION_GREATER "4")
       set(qtlibs
         ${qtlibs}
