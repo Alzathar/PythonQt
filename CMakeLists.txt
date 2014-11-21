@@ -11,6 +11,14 @@ cmake_minimum_required(VERSION 3.0)
 project(PythonQt)
 #-----------------------------------------------------------------------------
 
+# By default PythonQt is compiled in Release mode
+IF(NOT CMAKE_BUILD_TYPE)
+  MESSAGE(STATUS "Setting build type to 'Release' as none was specified.")
+  SET(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
+  # Set the possible values of build type for cmake-gui
+  SET_PROPERTY(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
+ENDIF()
+
 #-----------------------------------------------------------------------------
 # Python libraries
 
