@@ -48,6 +48,8 @@ endif()
 
 if (PythonQt_QT_VERSION)
 
+  option(BUILD_CONSOLE_WIDGET "Include the PythonQtScriptingConsole widget (Require to wrap QtGui and QtWidgets)" OFF)
+
   option(PythonQt_Wrap_QtAll "Make all Qt components available in python" OFF)
 
   set(qtlibs Core Gui Widgets Network OpenGL PrintSupport Sql Svg UiTools WebKit WebKitWidgets Xml)
@@ -239,7 +241,8 @@ if (PythonQt_QT_VERSION)
     )
   endif()
   
-  if (PythonQt_Wrap_QtWidgets OR PythonQt_Wrap_Qtwidgets)
+
+  if (BUILD_CONSOLE_WIDGET)
     set(sources
       ${sources}
       src/gui/PythonQtScriptingConsole.cpp
@@ -298,7 +301,7 @@ if (PythonQt_QT_VERSION)
     )
   endif()
   
-  if (PythonQt_Wrap_QtWidgets OR PythonQt_Wrap_Qtwidgets)
+  if (BUILD_CONSOLE_WIDGET)
     set(moc_sources
       ${moc_sources}
       src/gui/PythonQtScriptingConsole.h
