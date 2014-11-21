@@ -4,7 +4,6 @@
 #include <PythonQtSignalReceiver.h>
 #include <QDate>
 #include <QStringList>
-#include <QTextDocument>
 #include <QVariant>
 #include <qbitarray.h>
 #include <qbytearray.h>
@@ -14,8 +13,6 @@
 #include <qlist.h>
 #include <qlocale.h>
 #include <qmargins.h>
-#include <qmatrix.h>
-#include <qmatrix4x4.h>
 #include <qpoint.h>
 #include <qrect.h>
 #include <qregexp.h>
@@ -23,9 +20,15 @@
 #include <qstringlist.h>
 #include <qtextcodec.h>
 #include <qtimezone.h>
-#include <qtransform.h>
 #include <qurl.h>
 #include <qurlquery.h>
+
+#if defined(QT_GUI_LIB)
+#include <QTextDocument>
+#include <qmatrix.h>
+#include <qmatrix4x4.h>
+#include <qtransform.h>
+#endif
 
 QBitArray* PythonQtWrapper_QBitArray::new_QBitArray()
 { 
@@ -1257,6 +1260,7 @@ bool  PythonQtWrapper_QLine::__ne__(QLine* theWrappedObject, const QLine&  d) co
   return ( (*theWrappedObject)!= d);
 }
 
+#if defined(QT_GUI_LIB)
 QLine  PythonQtWrapper_QLine::__mul__(QLine* theWrappedObject, const QMatrix&  m)
 {
   return ( (*theWrappedObject)* m);
@@ -1266,6 +1270,7 @@ QLine  PythonQtWrapper_QLine::__mul__(QLine* theWrappedObject, const QTransform&
 {
   return ( (*theWrappedObject)* m);
 }
+#endif
 
 void PythonQtWrapper_QLine::writeTo(QLine* theWrappedObject, QDataStream&  arg__1)
 {
@@ -1432,6 +1437,7 @@ bool  PythonQtWrapper_QLineF::__ne__(QLineF* theWrappedObject, const QLineF&  d)
   return ( (*theWrappedObject)!= d);
 }
 
+#if defined(QT_GUI_LIB)
 QLineF  PythonQtWrapper_QLineF::__mul__(QLineF* theWrappedObject, const QMatrix&  m)
 {
   return ( (*theWrappedObject)* m);
@@ -1441,6 +1447,7 @@ QLineF  PythonQtWrapper_QLineF::__mul__(QLineF* theWrappedObject, const QTransfo
 {
   return ( (*theWrappedObject)* m);
 }
+#endif
 
 void PythonQtWrapper_QLineF::writeTo(QLineF* theWrappedObject, QDataStream&  arg__1)
 {
@@ -2058,6 +2065,7 @@ int  PythonQtWrapper_QPoint::manhattanLength(QPoint* theWrappedObject) const
   return ( theWrappedObject->manhattanLength());
 }
 
+#if defined(QT_GUI_LIB)
 QPoint  PythonQtWrapper_QPoint::__mul__(QPoint* theWrappedObject, const QMatrix&  m)
 {
   return ( (*theWrappedObject)* m);
@@ -2072,6 +2080,7 @@ QPoint  PythonQtWrapper_QPoint::__mul__(QPoint* theWrappedObject, const QTransfo
 {
   return ( (*theWrappedObject)* m);
 }
+#endif
 
 const QPoint  PythonQtWrapper_QPoint::__mul__(QPoint* theWrappedObject, double  factor)
 {
@@ -2204,6 +2213,7 @@ qreal  PythonQtWrapper_QPointF::manhattanLength(QPointF* theWrappedObject) const
   return ( theWrappedObject->manhattanLength());
 }
 
+#if defined(QT_GUI_LIB)
 QPointF  PythonQtWrapper_QPointF::__mul__(QPointF* theWrappedObject, const QMatrix&  m)
 {
   return ( (*theWrappedObject)* m);
@@ -2218,6 +2228,7 @@ QPointF  PythonQtWrapper_QPointF::__mul__(QPointF* theWrappedObject, const QTran
 {
   return ( (*theWrappedObject)* m);
 }
+#endif
 
 const QPointF  PythonQtWrapper_QPointF::__mul__(QPointF* theWrappedObject, qreal  c)
 {
@@ -3981,7 +3992,7 @@ QString  PythonQtWrapper_QUrl::userName(QUrl* theWrappedObject, QUrl::ComponentF
 
 QString PythonQtWrapper_QUrl::py_toString(QUrl* obj) { return obj->toString(); }
 
-
+#if defined(QT_GUI_LIB)
 QTextCodec*  PythonQtWrapper_Qt::static_Qt_codecForHtml(const QByteArray&  ba)
 {
   return (Qt::codecForHtml(ba));
@@ -3996,5 +4007,5 @@ bool  PythonQtWrapper_Qt::static_Qt_mightBeRichText(const QString&  arg__1)
 {
   return (Qt::mightBeRichText(arg__1));
 }
-
+#endif
 

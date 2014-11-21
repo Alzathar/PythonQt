@@ -48,16 +48,19 @@
 
 #include <QObject>
 #include <QVariantList>
-#include <QTextDocument>
-#include <QColor>
 #include <QDateTime>
 #include <QDate>
 #include <QTime>
 #include <QTimer>
-#include <QImage>
 #include <QMetaMethod>
 #include <QMetaEnum>
 #include <QMetaProperty>
+
+#if defined(QT_GUI_LIB)
+#include <QTextDocument>
+#include <QColor>
+#include <QImage>
+#endif
 
 class PYTHONQT_EXPORT PythonQtStdDecorators : public QObject
 {

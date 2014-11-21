@@ -127,6 +127,7 @@ void PythonQtTestSlotCalling::testInheritance() {
 }
 
 void PythonQtTestSlotCalling::testAutoConversion() {
+#if defined(QT_GUI_LIB)
   QVERIFY(_helper->runScript("if obj.setAutoConvertColor(PythonQt.QtCore.Qt.red)==PythonQt.Qt.QColor(PythonQt.QtCore.Qt.red): obj.setPassed();\n"));
   QVERIFY(_helper->runScript("if obj.setAutoConvertBrush(PythonQt.QtCore.Qt.red)==PythonQt.Qt.QBrush(PythonQt.QtCore.Qt.red): obj.setPassed();\n"));
   QVERIFY(_helper->runScript("if obj.setAutoConvertPen(PythonQt.QtCore.Qt.red)==PythonQt.Qt.QPen(PythonQt.QtCore.Qt.red): obj.setPassed();\n"));
@@ -134,6 +135,7 @@ void PythonQtTestSlotCalling::testAutoConversion() {
   QVERIFY(_helper->runScript("if obj.setAutoConvertPen(PythonQt.Qt.QColor(PythonQt.QtCore.Qt.red))==PythonQt.Qt.QPen(PythonQt.QtCore.Qt.red): obj.setPassed();\n"));
   QVERIFY(_helper->runScript("if obj.setAutoConvertCursor(PythonQt.Qt.QCursor(PythonQt.QtCore.Qt.UpArrowCursor)).shape()==PythonQt.Qt.QCursor(PythonQt.QtCore.Qt.UpArrowCursor).shape(): obj.setPassed();\n"));
   QVERIFY(_helper->runScript("if obj.setAutoConvertCursor(PythonQt.QtCore.Qt.UpArrowCursor).shape()==PythonQt.Qt.QCursor(PythonQt.QtCore.Qt.UpArrowCursor).shape(): obj.setPassed();\n"));
+#endif
 }
 
 void PythonQtTestSlotCalling::testNoArgSlotCall()
@@ -165,6 +167,7 @@ void PythonQtTestSlotCalling::testPyObjectSlotCall()
 
 void PythonQtTestSlotCalling::testCPPSlotCalls()
 {
+#if defined(QT_GUI_LIB)
   // test QColor compare operation
   QVERIFY(_helper->runScript("if PythonQt.QtGui.QColor(1,2,3)==PythonQt.QtGui.QColor(1,2,3): obj.setPassed();obj.testNoArg()\n"));
   QVERIFY(_helper->runScript("if PythonQt.QtGui.QColor(1,2,3)!=PythonQt.QtGui.QColor(3,2,1): obj.setPassed();obj.testNoArg()\n"));
@@ -175,6 +178,7 @@ void PythonQtTestSlotCalling::testCPPSlotCalls()
   QVERIFY(_helper->runScript("if obj.getQColor3(PythonQt.QtGui.QColor(1,2,3))==PythonQt.QtGui.QColor(1,2,3): obj.setPassed();\n"));
   QVERIFY(_helper->runScript("if obj.getQColor4(PythonQt.QtGui.QColor(1,2,3))==PythonQt.QtGui.QColor(1,2,3): obj.setPassed();\n"));
   QVERIFY(_helper->runScript("if obj.getQColor5()==PythonQt.QtGui.QColor(1,2,3): obj.setPassed();\n"));
+#endif
 }
 
 void PythonQtTestSlotCalling::testPODSlotCalls()
@@ -225,13 +229,13 @@ void PythonQtTestSlotCalling::testQListSlotCalls()
   QVERIFY(_helper->runScript("if obj.getQListfloat()==(1,2,3): obj.setPassed();\n"));
 
   QVERIFY(_helper->runScript("if obj.getQListDayOfWeek((PythonQt.QtCore.Qt.Monday, PythonQt.QtCore.Qt.Friday))==(PythonQt.QtCore.Qt.Monday, PythonQt.QtCore.Qt.Friday): obj.setPassed();\n"));
-
+#if defined(QT_GUI_LIB)
   QVERIFY(_helper->runScript("if obj.getQPair((1.2, PythonQt.QtGui.QColor(PythonQt.QtCore.Qt.red)))==(1.2, PythonQt.QtGui.QColor(PythonQt.QtCore.Qt.red)): obj.setPassed();\n"));
   QVERIFY(_helper->runScript("if obj.getQPairVariant((1.2, PythonQt.QtGui.QColor(PythonQt.QtCore.Qt.red)))==(1.2, PythonQt.QtGui.QColor(PythonQt.QtCore.Qt.red)): obj.setPassed();\n"));
 
   QVERIFY(_helper->runScript("if obj.getQVectorQPair1(((1.2, PythonQt.QtGui.QColor(PythonQt.QtCore.Qt.red)),))==((1.2, PythonQt.QtGui.QColor(PythonQt.QtCore.Qt.red)),): obj.setPassed();\n"));
   QVERIFY(_helper->runScript("if obj.getQVectorQPair2(((1.2, PythonQt.QtGui.QColor(PythonQt.QtCore.Qt.red)),))==((1.2, PythonQt.QtGui.QColor(PythonQt.QtCore.Qt.red)),): obj.setPassed();\n"));
-
+#endif
   QVERIFY(_helper->runScript("if obj.getQListQSize()==(PythonQt.QtCore.QSize(1,2), PythonQt.QtCore.QSize(3,4)): obj.setPassed();\n"));
   QVERIFY(_helper->runScript("if obj.getQListQSize((PythonQt.QtCore.QSize(1,2), PythonQt.QtCore.QSize(3,4)))==(PythonQt.QtCore.QSize(1,2), PythonQt.QtCore.QSize(3,4)): obj.setPassed();\n"));
 }
@@ -247,8 +251,10 @@ void PythonQtTestSlotCalling::testObjectSlotCalls()
   QVERIFY(_helper->runScript("if obj.getQObject(obj)==obj: obj.setPassed();\n"));
   QVERIFY(_helper->runScript("if obj.getTestObject(obj)==obj: obj.setPassed();\n"));
   QVERIFY(_helper->runScript("if obj.getNewObject().className()=='PythonQtTestSlotCallingHelper': obj.setPassed();\n"));
+#if defined(QT_GUI_LIB)
   QEXPECT_FAIL("", "Testing to pass a QObject when another object was expected", Continue);
   QVERIFY(_helper->runScript("if obj.getQWidget(obj)==obj: obj.setPassed();\n"));
+#endif
 }
 
 void PythonQtTestSlotCalling::testCppFactory()
@@ -532,13 +538,16 @@ void PythonQtTestApi::testImporter()
 
 void PythonQtTestApi::testQtNamespace()
 {
+#if defined(QT_GUI_LIB)
   QVERIFY(_main.getVariable("PythonQt.QtCore.Qt.red").toInt()==Qt::red);
   QVERIFY(_main.getVariable("PythonQt.QtCore.Qt.FlatCap").toInt()==Qt::FlatCap);
   QVERIFY(PythonQtObjectPtr(_main.getVariable("PythonQt.QtCore.Qt.mightBeRichText")));
+#endif
   // check for an enum type wrapper
   QVERIFY(PythonQtObjectPtr(_main.getVariable("PythonQt.QtCore.Qt.AlignmentFlag")));
   // check for a flags type wrapper
   QVERIFY(PythonQtObjectPtr(_main.getVariable("PythonQt.QtCore.Qt.Alignment")));
+  
 }
 
 void PythonQtTestApi::testConnects()
@@ -549,6 +558,7 @@ void PythonQtTestApi::testConnects()
 
 void PythonQtTestApi::testQColorDecorators()
 {
+#if defined(QT_GUI_LIB)
   PythonQtObjectPtr colorClass = _main.getVariable("PythonQt.QtGui.QColor");
   QVERIFY(colorClass);
   // verify that the class is in the correct module
@@ -579,6 +589,7 @@ void PythonQtTestApi::testQColorDecorators()
   QVERIFY(publicMethod);
   // call with passing self in:
   QVERIFY(colorClass.call("red", QVariantList() << QColor(255,0,0)).toInt() == 255);
+#endif
 }
 
 QByteArray PythonQtTestApiHelper::readFileAsBytes(const QString& filename)

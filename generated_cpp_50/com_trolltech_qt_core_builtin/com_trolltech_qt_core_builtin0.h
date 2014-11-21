@@ -1221,9 +1221,11 @@ Q_DECLARE_FLAGS(TouchPointStates, TouchPointState)
 Q_DECLARE_FLAGS(WindowStates, WindowState)
 Q_DECLARE_FLAGS(WindowFlags, WindowType)
 public slots:
+#if defined(QT_GUI_LIB)
    QTextCodec*  static_Qt_codecForHtml(const QByteArray&  ba);
    QString  static_Qt_convertFromPlainText(const QString&  plain, Qt::WhiteSpaceMode  mode = Qt::WhiteSpacePre);
    bool  static_Qt_mightBeRichText(const QString&  arg__1);
+#endif
 };
 
 

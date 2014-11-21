@@ -291,6 +291,8 @@ PyObject* PythonQtConv::convertQtValueToPythonInternal(int type, const void* dat
    return object;
  }
 
+#if defined(QT_GUI_LIB)
+
 void* PythonQtConv::handlePythonToQtAutoConversion(int typeId, PyObject* obj, void* alreadyAllocatedCPPObject)
 {
   void* ptr = alreadyAllocatedCPPObject;
@@ -364,11 +366,14 @@ void* PythonQtConv::handlePythonToQtAutoConversion(int typeId, PyObject* obj, vo
   return NULL;
 }
 
+#endif
+
 void* PythonQtConv::ConvertPythonToQt(const PythonQtMethodInfo::ParameterInfo& info, PyObject* obj, bool strict, PythonQtClassInfo* /*classInfo*/, void* alreadyAllocatedCPPObject)
  {
    bool ok = false;
    void* ptr = NULL;
 
+#if defined(QT_GUI_LIB)
    // autoconversion of QPen/QBrush/QCursor/QColor from different type
    if (info.pointerCount==0 && !strict) {
      ptr = handlePythonToQtAutoConversion(info.typeId, obj, alreadyAllocatedCPPObject);
@@ -376,6 +381,7 @@ void* PythonQtConv::ConvertPythonToQt(const PythonQtMethodInfo::ParameterInfo& i
        return ptr;
      }
    }
+#endif
    if (info.pointerCount==1 && PythonQtBoolResult_Check(obj) && info.typeId == QMetaType::Bool) {
      PythonQtBoolResultObject* boolResul = (PythonQtBoolResultObject*)obj;
      // store the wrapped pointer in an extra pointer and let ptr point to the extra pointer
@@ -1400,6 +1406,7 @@ QString PythonQtConv::CPPObjectToString(int type, const void* data) {
       r = s->toString(Qt::ISODate);
     }
       break;
+#if defined(QT_GUI_LIB)
     case QVariant::Pixmap:
     {
       const QPixmap* s = static_cast<const QPixmap*>(data);
@@ -1412,6 +1419,7 @@ QString PythonQtConv::CPPObjectToString(int type, const void* data) {
       r = QString("Image ") + QString::number(s->width()) + ", " + QString::number(s->height());
     }
       break;
+#endif
     case QVariant::Url:
       {
         const QUrl* s = static_cast<const QUrl*>(data);

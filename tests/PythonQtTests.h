@@ -48,10 +48,12 @@
 #include "PythonQtImportFileInterface.h"
 #include "PythonQtCppWrapperFactory.h"
 
+#if defined(QT_GUI_LIB)
 #include <QPen>
 #include <QColor>
 #include <QBrush>
 #include <QCursor>
+#endif
 //#include <QGLWidget>
 
 class PythonQtTestSlotCallingHelper;
@@ -446,20 +448,21 @@ public Q_SLOTS:
   QMap<int, QVariant> getQMapIntVariant(const QMap<int, QVariant>& map) { _called = true; return map; }
   QMap<int, QString> getQMapIntString(const QMap<int, QString>& map) { _called = true; return map; }
 
+#if defined(QT_GUI_LIB)
   QVector<QPair<double, QColor >  > getQVectorQPair1(const QVector<QPair<double, QColor >  > &list) { _called = true; return list; }
   QVector<QPair<qreal, QColor >  > getQVectorQPair2(const QVector<QPair<qreal, QColor >  > &list) { _called = true; return list; }
-  
+
   QPair<double, QColor> getQPair(const QPair<double, QColor>& pair) { _called = true; return pair; }
-
   QPair<double, QVariant> getQPairVariant(const QPair<double, QVariant>& pair) { _called = true; return pair; }
-
+  
   // QColor as representative for C++ value classes
   QColor  getQColor1(const QColor& var) { _called = true;  return var; }
   QColor  getQColor2(QColor& var) { _called = true;  return var; }
   QColor  getQColor3(QColor* col) { _called = true;  return *col; }
   QColor  getQColor4(const QVariant& color) { _called = true;  return qvariant_cast<QColor>(color); }
   QColor* getQColor5() { _called = true; static QColor c(1,2,3); return &c; }
-
+#endif
+  
   PyObject* getPyObject(PyObject* obj) {
     _called = true;
     // returned object needs to get an extra ref count!
@@ -481,7 +484,9 @@ public Q_SLOTS:
   PythonQtTestSlotCallingHelper* getTestObject(PythonQtTestSlotCallingHelper* obj) {  _called = true; return obj; }
   //! testing inheritance checking
   QObject* getQObject(QObject* obj) { _called = true; return obj; }
+#if defined(QT_GUI_LIB)
   QWidget* getQWidget(QWidget* obj) { _called = true; return obj; }
+#endif
   //! testing if an object that was not wrapped is wrapped earlier is wrapped correctly
   QObject* getNewObject() { _called = true; return new PythonQtTestSlotCallingHelper(NULL); }
 
@@ -522,10 +527,12 @@ public Q_SLOTS:
   ClassA* createClassDAsA() { _called = true; return new ClassD; }
   ClassB* createClassDAsB() { _called = true; return new ClassD; }
 
+#if defined(QT_GUI_LIB)
   QColor  setAutoConvertColor(const QColor& color) { _called = true; return color; };
   QBrush  setAutoConvertBrush(const QBrush& brush) { _called = true; return brush; };
   QPen    setAutoConvertPen(const QPen& pen) { _called = true; return pen; };
   QCursor setAutoConvertCursor(const QCursor& cursor) { _called = true; return cursor; };
+#endif
   
 private:
   bool _passed;

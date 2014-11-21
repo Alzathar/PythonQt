@@ -62,7 +62,9 @@
 PythonQt* PythonQt::_self = NULL;
 int       PythonQt::_uniqueModuleCount = 0;
 
+#if defined(QT_GUI_LIB)
 void PythonQt_init_QtGuiBuiltin(PyObject*);
+#endif
 void PythonQt_init_QtCoreBuiltin(PyObject*);
 
 
@@ -128,7 +130,9 @@ void PythonQt::init(int flags, const QByteArray& pythonQtModuleName)
     PythonQtRegisterQPairConverter(double, double);
     PythonQtRegisterQPairConverter(QString, QString);
     PythonQtRegisterQPairConverter(QByteArray, QByteArray);
+#if defined(QT_GUI_LIB)
     PythonQtRegisterQPairConverter(double, QColor);
+#endif
     PythonQtRegisterQPairConverter(double, QPointF);
     PythonQtRegisterQPairConverter(double, QVariant);
     PythonQtRegisterQPairConverter(QString, QSizeF);
@@ -140,7 +144,9 @@ void PythonQt::init(int flags, const QByteArray& pythonQtModuleName)
 
     // register some QList/QVector of QPairs that are used in the Qt interfaces:
     PythonQtRegisterListTemplateQPairConverter(QVector, double, QVariant);
+#if defined(QT_GUI_LIB)
     PythonQtRegisterListTemplateQPairConverter(QVector, double, QColor);
+#endif
     // NOTE: the extra space between the > is needed (and added by the moc)
     PythonQtMethodInfo::addParameterTypeAlias("QVector<QPair<qreal,QVariant> >", "QVector<QPair<double,QVariant> >");
     PythonQtMethodInfo::addParameterTypeAlias("QVector<QPair<qreal,QColor> >", "QVector<QPair<double,QColor> >");
@@ -163,7 +169,9 @@ void PythonQt::init(int flags, const QByteArray& pythonQtModuleName)
     PythonQtMethodInfo::addParameterTypeAlias("QHash<QNetworkRequest::Attribute,QVariant>", "QHash<int,QVariant>");
 
     PythonQt_init_QtCoreBuiltin(NULL);
+#if defined(QT_GUI_LIB)
     PythonQt_init_QtGuiBuiltin(NULL);
+#endif
 
     PythonQt::self()->addDecorators(new PythonQtStdDecorators());
     PythonQt::self()->registerCPPClass("QMetaObject",0, "QtCore", PythonQtCreateObject<PythonQtWrapper_QMetaObject>);
@@ -184,6 +192,7 @@ void PythonQt::init(int flags, const QByteArray& pythonQtModuleName)
     PythonQtRegisterToolClassesTemplateConverterForKnownClass(QPointF);
     PythonQtRegisterToolClassesTemplateConverterForKnownClass(QRegExp);
 
+#if defined(QT_GUI_LIB)
     PythonQtRegisterToolClassesTemplateConverterForKnownClass(QFont);
     PythonQtRegisterToolClassesTemplateConverterForKnownClass(QPixmap);
     PythonQtRegisterToolClassesTemplateConverterForKnownClass(QBrush);
@@ -201,7 +210,8 @@ void PythonQt::init(int flags, const QByteArray& pythonQtModuleName)
     PythonQtRegisterToolClassesTemplateConverterForKnownClass(QTextLength);
     PythonQtRegisterToolClassesTemplateConverterForKnownClass(QTextFormat);
     PythonQtRegisterToolClassesTemplateConverterForKnownClass(QMatrix);
-
+#endif
+    
     PyObject* pack = PythonQt::priv()->packageByName("QtCore");
     PyObject* pack2 = PythonQt::priv()->packageByName("Qt");
     PyObject* qtNamespace = PythonQt::priv()->getClassInfo("Qt")->pythonQtClassWrapper();

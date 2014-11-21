@@ -44,8 +44,10 @@
 #include <qtextboundaryfinder.h>
 #include <qtextcodec.h>
 #include <qvector.h>
-#include <qwidget.h>
 
+#if defined(QT_GUI_LIB)
+#include <qwidget.h>
+#endif
 
 
 class PythonQtShell_QPauseAnimation : public QPauseAnimation
@@ -817,12 +819,16 @@ public slots:
 QSignalMapper* new_QSignalMapper(QObject*  parent = 0);
 void delete_QSignalMapper(QSignalMapper* obj) { delete obj; } 
    QObject*  mapping(QSignalMapper* theWrappedObject, QObject*  object) const;
+#if defined(QT_GUI_LIB)   
    QObject*  mapping(QSignalMapper* theWrappedObject, QWidget*  widget) const;
+#endif
    QObject*  mapping(QSignalMapper* theWrappedObject, const QString&  text) const;
    QObject*  mapping(QSignalMapper* theWrappedObject, int  id) const;
    void removeMappings(QSignalMapper* theWrappedObject, QObject*  sender);
    void setMapping(QSignalMapper* theWrappedObject, QObject*  sender, QObject*  object);
+#if defined(QT_GUI_LIB)
    void setMapping(QSignalMapper* theWrappedObject, QObject*  sender, QWidget*  widget);
+#endif
    void setMapping(QSignalMapper* theWrappedObject, QObject*  sender, const QString&  text);
    void setMapping(QSignalMapper* theWrappedObject, QObject*  sender, int  id);
 };

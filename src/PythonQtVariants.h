@@ -56,8 +56,8 @@
 #include <QPointF>
 #include <QRegExp>
 
+#if defined(QT_GUI_LIB)
 #include <QFont>
-#include <QBitmap>
 #include <QBrush>
 #include <QColor>
 #include <QPalette>
@@ -73,6 +73,7 @@
 #include <QTextLength>
 #include <QTextFormat>
 #include <QMatrix>
+#endif
 
 #endif
 
