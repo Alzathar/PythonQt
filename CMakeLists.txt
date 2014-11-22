@@ -9,6 +9,12 @@ cmake_minimum_required(VERSION 3.0)
 
 #-----------------------------------------------------------------------------
 project(PythonQt)
+
+SET(PythonQt_VERSION_MAJOR 3)
+SET(PythonQt_VERSION_MINOR 0)
+SET(PythonQt_VERSION_PATCH 0)
+SET(PythonQt_VERSION "${PythonQt_VERSION_MAJOR}.${PythonQt_VERSION_MINOR}.${PythonQt_VERSION_PATCH}")
+
 #-----------------------------------------------------------------------------
 
 # By default PythonQt is compiled in Release mode
