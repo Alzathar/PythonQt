@@ -33,6 +33,18 @@ include_directories("${PYTHON_INCLUDE_DIR}")
 add_definitions(-DPYTHONQT_USE_RELEASE_PYTHON_FALLBACK)
 
 #-----------------------------------------------------------------------------
+# Offer the user the choice of overriding the installation directories
+set(INSTALL_LIB_DIR "${CMAKE_INSTALL_PREFIX}/lib" CACHE PATH "Installation directory for libraries" FORCE)
+set(INSTALL_BIN_DIR "${CMAKE_INSTALL_PREFIX}/bin" CACHE PATH "Installation directory for executables" FORCE)
+set(INSTALL_INCLUDE_DIR "${CMAKE_INSTALL_PREFIX}include" CACHE PATH "Installation directory for header files" FORCE)
+if(WIN32 AND NOT CYGWIN)
+  set(DEF_INSTALL_CMAKE_DIR CMake)
+else()
+  set(DEF_INSTALL_CMAKE_DIR lib/CMake/PythonQt)
+endif()
+set(INSTALL_CMAKE_DIR "${CMAKE_INSTALL_PREFIX}/${DEF_INSTALL_CMAKE_DIR}" CACHE PATH "Installation directory for CMake files" FORCE)
+
+#-----------------------------------------------------------------------------
 # Build options
 
 set(PythonQt_QT_MAJOR_VERSION "" CACHE STRING "Choose which version of Qt (4 or 5) you wand to wrap")
@@ -383,6 +395,17 @@ if (PythonQt_QT_VERSION)
     MACOSX_RPATH "${CMAKE_INSTALL_PREFIX}/lib"
     )
 
+  set_target_properties(PythonQt PROPERTIES
+    PUBLIC_HEADER "${headers}"
+    )
+    
+  install(TARGETS PythonQt
+    # IMPORTANT: Add the foo library to the "export-set"
+    EXPORT PythonQtTargets
+    RUNTIME DESTINATION "${INSTALL_BIN_DIR}" COMPONENT bin
+    LIBRARY DESTINATION "${INSTALL_LIB_DIR}" COMPONENT lib
+    PUBLIC_HEADER DESTINATION "${INSTALL_INCLUDE_DIR}/PythonQt"
+    COMPONENT dev)
 
   target_link_libraries(PythonQt
                 ${PYTHON_LIBRARY}
@@ -392,11 +415,38 @@ if (PythonQt_QT_VERSION)
 #-----------------------------------------------------------------------------
 # Install library (on windows, put the dll in 'bin' and the archive in 'lib')
 
-  install(TARGETS PythonQt
-          RUNTIME DESTINATION bin
-          LIBRARY DESTINATION lib
-          ARCHIVE DESTINATION lib)
-  install(FILES ${headers} DESTINATION include/PythonQt)
+  # Add all targets to the build-tree export set
+  export(TARGETS PythonQt
+    FILE "${PROJECT_BINARY_DIR}/PythonQtTargets.cmake")
+ 
+  # Export the package for use from the build-tree
+  # (this registers the build-tree with a global CMake-registry)
+  export(PACKAGE PythonQt)
+ 
+  # Create the PythonQtConfig.cmake and PythonQtConfigVersion files
+  file(RELATIVE_PATH REL_INCLUDE_DIR "${INSTALL_CMAKE_DIR}" "${INSTALL_INCLUDE_DIR}")
+  # ... for the build tree
+  set(CONF_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}/src" "${PROJECT_SOURCE_DIR}/generated_cpp${generated_cpp_suffix}")
+  configure_file(PythonQtConfig.cmake.in
+    "${PROJECT_BINARY_DIR}/PythonQtConfig.cmake" @ONLY)
+  # ... for the install tree
+  set(CONF_INCLUDE_DIRS "\${PythonQt_CMAKE_DIR}/${REL_INCLUDE_DIR}")
+  configure_file(PythonQtConfig.cmake.in
+    "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/PythonQtConfig.cmake" @ONLY)
+  # ... for both
+  configure_file(PythonQtConfigVersion.cmake.in
+    "${PROJECT_BINARY_DIR}/PythonQtConfigVersion.cmake" @ONLY)
+ 
+  # Install the PythonQtConfig.cmake and PythonQtConfigVersion.cmake
+  install(FILES
+    "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/PythonQtConfig.cmake"
+    "${PROJECT_BINARY_DIR}/PythonQtConfigVersion.cmake"
+    DESTINATION "${INSTALL_CMAKE_DIR}" COMPONENT dev)
+ 
+  # Install the export set for use with the install-tree
+  install(EXPORT PythonQtTargets DESTINATION
+    "${INSTALL_CMAKE_DIR}" COMPONENT dev)
+  
 
 #-----------------------------------------------------------------------------
 # Testing
@@ -431,5 +481,4 @@ if (PythonQt_QT_VERSION)
       )
   endif()
 
-
-endif() 
+endif()
