@@ -2,7 +2,6 @@
 #include <QDate>
 #include <QObject>
 #include <QStringList>
-#include <QTextDocument>
 #include <QVariant>
 #include <qbitarray.h>
 #include <qbytearray.h>
@@ -12,8 +11,6 @@
 #include <qlist.h>
 #include <qlocale.h>
 #include <qmargins.h>
-#include <qmatrix.h>
-#include <qmatrix4x4.h>
 #include <qnamespace.h>
 #include <qpoint.h>
 #include <qrect.h>
@@ -22,11 +19,15 @@
 #include <qstringlist.h>
 #include <qtextcodec.h>
 #include <qtimezone.h>
-#include <qtransform.h>
 #include <qurl.h>
 #include <qurlquery.h>
 
-
+#if defined(QT_GUI_LIB)
+#include <QTextDocument>
+#include <qmatrix.h>
+#include <qmatrix4x4.h>
+#include <qtransform.h>
+#endif
 
 class PythonQtWrapper_QBitArray : public QObject
 { Q_OBJECT
@@ -351,8 +352,10 @@ void delete_QLine(QLine* obj) { delete obj; }
    int  dy(QLine* theWrappedObject) const;
    bool  isNull(QLine* theWrappedObject) const;
    bool  __ne__(QLine* theWrappedObject, const QLine&  d) const;
+#if defined(QT_GUI_LIB)
    QLine  __mul__(QLine* theWrappedObject, const QMatrix&  m);
    QLine  __mul__(QLine* theWrappedObject, const QTransform&  m);
+#endif
    void writeTo(QLine* theWrappedObject, QDataStream&  arg__1);
    bool  __eq__(QLine* theWrappedObject, const QLine&  d) const;
    void readFrom(QLine* theWrappedObject, QDataStream&  arg__1);
@@ -405,8 +408,10 @@ void delete_QLineF(QLineF* obj) { delete obj; }
    qreal  length(QLineF* theWrappedObject) const;
    QLineF  normalVector(QLineF* theWrappedObject) const;
    bool  __ne__(QLineF* theWrappedObject, const QLineF&  d) const;
+#if defined(QT_GUI_LIB)
    QLineF  __mul__(QLineF* theWrappedObject, const QMatrix&  m);
    QLineF  __mul__(QLineF* theWrappedObject, const QTransform&  m);
+#endif
    void writeTo(QLineF* theWrappedObject, QDataStream&  arg__1);
    bool  __eq__(QLineF* theWrappedObject, const QLineF&  d) const;
    void readFrom(QLineF* theWrappedObject, QDataStream&  arg__1);
@@ -576,9 +581,11 @@ void delete_QPoint(QPoint* obj) { delete obj; }
    int  static_QPoint_dotProduct(const QPoint&  p1, const QPoint&  p2);
    bool  isNull(QPoint* theWrappedObject) const;
    int  manhattanLength(QPoint* theWrappedObject) const;
+#if defined(QT_GUI_LIB)
    QPoint  __mul__(QPoint* theWrappedObject, const QMatrix&  m);
    QPoint  __mul__(QPoint* theWrappedObject, const QMatrix4x4&  matrix);
    QPoint  __mul__(QPoint* theWrappedObject, const QTransform&  m);
+#endif
    const QPoint  __mul__(QPoint* theWrappedObject, double  factor);
    const QPoint  __mul__(QPoint* theWrappedObject, float  factor);
    const QPoint  __mul__(QPoint* theWrappedObject, int  factor);
@@ -621,9 +628,11 @@ void delete_QPointF(QPointF* obj) { delete obj; }
    qreal  static_QPointF_dotProduct(const QPointF&  p1, const QPointF&  p2);
    bool  isNull(QPointF* theWrappedObject) const;
    qreal  manhattanLength(QPointF* theWrappedObject) const;
+#if defined(QT_GUI_LIB)
    QPointF  __mul__(QPointF* theWrappedObject, const QMatrix&  m);
    QPointF  __mul__(QPointF* theWrappedObject, const QMatrix4x4&  matrix);
    QPointF  __mul__(QPointF* theWrappedObject, const QTransform&  m);
+#endif
    const QPointF  __mul__(QPointF* theWrappedObject, qreal  c);
    QPointF*  __imul__(QPointF* theWrappedObject, qreal  c);
    const QPointF  __add__(QPointF* theWrappedObject, const QPointF&  p2);
@@ -1286,9 +1295,11 @@ Q_DECLARE_FLAGS(TouchPointStates, TouchPointState)
 Q_DECLARE_FLAGS(WindowStates, WindowState)
 Q_DECLARE_FLAGS(WindowFlags, WindowType)
 public slots:
+#if defined(QT_GUI_LIB)
    QTextCodec*  static_Qt_codecForHtml(const QByteArray&  ba);
    QString  static_Qt_convertFromPlainText(const QString&  plain, Qt::WhiteSpaceMode  mode = Qt::WhiteSpacePre);
    bool  static_Qt_mightBeRichText(const QString&  arg__1);
+#endif
 };
 
 

@@ -42,7 +42,10 @@
 #include <qtextboundaryfinder.h>
 #include <qtextcodec.h>
 #include <qvector.h>
+
+#if defined(QT_GUI_LIB)
 #include <qwidget.h>
+#endif
 
 PythonQtShell_QPauseAnimation::~PythonQtShell_QPauseAnimation() {
   PythonQtPrivate* priv = PythonQt::priv();
@@ -3797,10 +3800,12 @@ QObject*  PythonQtWrapper_QSignalMapper::mapping(QSignalMapper* theWrappedObject
   return ( theWrappedObject->mapping(object));
 }
 
+#if defined(QT_GUI_LIB)
 QObject*  PythonQtWrapper_QSignalMapper::mapping(QSignalMapper* theWrappedObject, QWidget*  widget) const
 {
   return ( theWrappedObject->mapping(widget));
 }
+#endif
 
 QObject*  PythonQtWrapper_QSignalMapper::mapping(QSignalMapper* theWrappedObject, const QString&  text) const
 {
@@ -3822,10 +3827,12 @@ void PythonQtWrapper_QSignalMapper::setMapping(QSignalMapper* theWrappedObject, 
   ( theWrappedObject->setMapping(sender, object));
 }
 
+#if defined(QT_GUI_LIB)
 void PythonQtWrapper_QSignalMapper::setMapping(QSignalMapper* theWrappedObject, QObject*  sender, QWidget*  widget)
 {
   ( theWrappedObject->setMapping(sender, widget));
 }
+#endif
 
 void PythonQtWrapper_QSignalMapper::setMapping(QSignalMapper* theWrappedObject, QObject*  sender, const QString&  text)
 {
