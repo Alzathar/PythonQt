@@ -137,6 +137,10 @@ if (PythonQt_QT_VERSION)
         endforeach()
       endif()
     endforeach()
+    
+    if (${PythonQt_Wrap_QtGui} AND NOT ${PythonQt_Wrap_QtWidgets})
+      set(PythonQt_Wrap_QtWidgets ON CACHE BOOL "Module QtWidgets has been activated due to its imbrication within QtGui" FORCE)
+    endif()
   
     if (BUILD_TESTING)
       find_package(Qt5Test REQUIRED)
