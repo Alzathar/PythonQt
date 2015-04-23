@@ -42,6 +42,8 @@
 */
 //----------------------------------------------------------------------------------
 
+#include <Python.h> // To fix a compilation error between pyport.h and libc++ when the header <locale> is included (see http://bugs.python.org/issue10910)
+
 #include "PythonQtUtils.h"
 #include "PythonQtSystem.h"
 #include "PythonQtInstanceWrapper.h"

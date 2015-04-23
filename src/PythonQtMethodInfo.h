@@ -42,6 +42,7 @@
 */
 //----------------------------------------------------------------------------------
 
+#include "PythonQt.h"
 #include "PythonQtSystem.h"
 
 #include <QByteArray>
