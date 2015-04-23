@@ -2158,27 +2158,27 @@ return new QMessageLogger(file, line, function, category); }
 
 void PythonQtWrapper_QMessageLogger::critical(QMessageLogger* theWrappedObject, const char*  msg) const
 {
-  ( theWrappedObject->critical(msg));
+  ( theWrappedObject->critical("%s",msg));
 }
 
 void PythonQtWrapper_QMessageLogger::debug(QMessageLogger* theWrappedObject, const char*  msg) const
 {
-  ( theWrappedObject->debug(msg));
+  ( theWrappedObject->debug("%s",msg));
 }
 
 void PythonQtWrapper_QMessageLogger::fatal(QMessageLogger* theWrappedObject, const char*  msg) const
 {
-  ( theWrappedObject->fatal(msg));
+  ( theWrappedObject->fatal("%s",msg));
 }
 
 void PythonQtWrapper_QMessageLogger::noDebug(QMessageLogger* theWrappedObject, const char*  arg__1) const
 {
-  ( theWrappedObject->noDebug(arg__1));
+  ( theWrappedObject->noDebug("%s",arg__1));
 }
 
 void PythonQtWrapper_QMessageLogger::warning(QMessageLogger* theWrappedObject, const char*  msg) const
 {
-  ( theWrappedObject->warning(msg));
+  ( theWrappedObject->warning("%s",msg));
 }
 
 
